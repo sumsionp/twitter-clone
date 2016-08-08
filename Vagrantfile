@@ -24,6 +24,8 @@ Vagrant.configure(2) do |config|
     rvm --default use 2.2.2
     gem install rails -v '4.2.4' --no-document
     gem install pg --no-document
-    rails new /twitter-clone --database=postgresql --skip-turbolinks
+
+    # This only needed to be done on initial project setup
+    # rails new /twitter-clone --database=postgresql --skip-turbolinks
   SHELL
 end
