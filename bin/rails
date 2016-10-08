@@ -6,4 +6,16 @@ rescue LoadError => e
 end
 APP_PATH = File.expand_path('../../config/application', __FILE__)
 require_relative '../config/boot'
+
+if ARGV.first == 's' || ARGV.first == 'server'
+  require 'rails/commands/server'
+  module Rails
+    class Server
+      alias :default_options_bk :default_options
+      def default_options
+        default_options_bk.merge!(Host: '0.0.0.0')
+      end
+    end
+  end
+end
 require 'rails/commands'
